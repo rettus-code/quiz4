@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito:300,400,600,700&display=swap');
+@import url("https://use.fontawesome.com/releases/v5.13.1/css/all.css");
 :root {
     --main-color: #05a081;
     --text-color: #fff;
@@ -42,13 +43,17 @@ nav ul {
     padding: 0;
     margin: 0;
     display: flex;
-    justify-content: center;
     text-align: center;
     flex-wrap: wrap;
 }
-
+#toggle {
+    visibility: hidden;
+}
 /* nav ul - grid */
-
+nav ul {
+    display: grid;
+    justify-content: space-evenly;
+}
 nav ul li {
     flex: 1;
     margin: 0 .4rem;
@@ -65,7 +70,21 @@ nav ul li a {
 
 /* Dropdown navigation*/
 
-
+ul.drop-menu li {
+    display: none;
+    list-style: none;
+}
+li:hover > ul.drop-menu li {
+    display: flex;
+    flex: 1;
+}
+li > ul.drop-menu {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 100%;
+    width: 100%;
+}
 
 /* Hover effects */
 
@@ -116,11 +135,15 @@ nav.menu ul li a:hover:after {
         background: rgba(0, 0, 0, 0.5);
         display: none !important;
     }
-    .label {
-        display: block !important;
-        cursor: pointer;
+    #toggle:checked + .nav {
+        display: flex !important;
+        flex-direction: column;
+        flex: 1;
     }
-  
+    #toggle2:checked > .nav li ul .drop-menu{
+        display: flex !important;      flex-direction: column;
+        flex: 1;
+    }
     .nav a {
         display: block;
         margin: 0;
@@ -134,9 +157,6 @@ nav.menu ul li a:hover:after {
         width: 30px;
         color: var(--text-color);
         z-index: 1;
-    }
-    nav li ul {
-        visibility: hidden;
     }
 }
 
